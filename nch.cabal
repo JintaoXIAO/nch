@@ -1,0 +1,89 @@
+cabal-version: 2.2
+
+-- This file has been generated from package.yaml by hpack version 0.36.0.
+--
+-- see: https://github.com/sol/hpack
+
+name:           nch
+version:        0.1.0.0
+description:    Please see the README on GitHub at <https://github.com/githubuser/nch#readme>
+homepage:       https://github.com/githubuser/nch#readme
+bug-reports:    https://github.com/githubuser/nch/issues
+author:         Author name here
+maintainer:     example@example.com
+copyright:      2024 Author name here
+license:        BSD-3-Clause
+license-file:   LICENSE
+build-type:     Simple
+extra-source-files:
+    README.md
+    CHANGELOG.md
+
+source-repository head
+  type: git
+  location: https://github.com/githubuser/nch
+
+library
+  exposed-modules:
+      Lib
+      NetEase
+  other-modules:
+      Paths_nch
+  autogen-modules:
+      Paths_nch
+  hs-source-dirs:
+      src
+  other-extensions:
+      OverloadedStrings
+  ghc-options: -Wall -Wcompat -Widentities -Wincomplete-record-updates -Wincomplete-uni-patterns -Wmissing-export-lists -Wmissing-home-modules -Wpartial-fields -Wredundant-constraints
+  build-depends:
+      aeson
+    , base >=4.7 && <5
+    , bytestring
+    , directory
+    , filepath
+    , regex-posix
+  default-language: Haskell2010
+
+executable nch-exe
+  main-is: Main.hs
+  other-modules:
+      Paths_nch
+  autogen-modules:
+      Paths_nch
+  hs-source-dirs:
+      app
+  other-extensions:
+      OverloadedStrings
+  ghc-options: -Wall -Wcompat -Widentities -Wincomplete-record-updates -Wincomplete-uni-patterns -Wmissing-export-lists -Wmissing-home-modules -Wpartial-fields -Wredundant-constraints -threaded -rtsopts -with-rtsopts=-N
+  build-depends:
+      aeson
+    , base >=4.7 && <5
+    , bytestring
+    , directory
+    , filepath
+    , nch
+    , regex-posix
+  default-language: Haskell2010
+
+test-suite nch-test
+  type: exitcode-stdio-1.0
+  main-is: Spec.hs
+  other-modules:
+      Paths_nch
+  autogen-modules:
+      Paths_nch
+  hs-source-dirs:
+      test
+  other-extensions:
+      OverloadedStrings
+  ghc-options: -Wall -Wcompat -Widentities -Wincomplete-record-updates -Wincomplete-uni-patterns -Wmissing-export-lists -Wmissing-home-modules -Wpartial-fields -Wredundant-constraints -threaded -rtsopts -with-rtsopts=-N
+  build-depends:
+      aeson
+    , base >=4.7 && <5
+    , bytestring
+    , directory
+    , filepath
+    , nch
+    , regex-posix
+  default-language: Haskell2010
