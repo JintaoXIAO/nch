@@ -19,8 +19,6 @@ jobs:
 
     - name: Set up Haskell stack
       uses: actions/setup-haskell@v1
-      with:
-        ghc-version: '9.0.1'
 
     - name: Stack build
       run: stack build
