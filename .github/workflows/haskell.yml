@@ -1,25 +1,15 @@
-name: Haskell CI
-
-on:
-  push:
-    branches: [ "main" ]
-  pull_request:
-    branches: [ "main" ]
-
-permissions:
-  contents: read
-
+on: [push]
+name: build
 jobs:
-  build:
-
-    runs-on: ubuntu-latest
-
+  runhaskell:
+    name: Hello World
+    runs-on: ubuntu-latest # or macOS-latest, or windows-latest
     steps:
-    - uses: actions/checkout@v4
-
-    - name: Set up Haskell stack
-      uses: actions/setup-haskell@v1
-
-    - name: Stack build
-      run: stack build
-
+      - uses: actions/checkout@v4
+      - uses: haskell-actions/setup@v2
+        with:
+          ghc-version: '8.8.4' # Exact version of ghc to use
+          # cabal-version: 'latest'. Omitted, but defaults to 'latest'
+          enable-stack: true
+          stack-version: 'latest'
+      - run: stack build
