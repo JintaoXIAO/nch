@@ -31,7 +31,7 @@ import RIO
       MonadReader(ask),
       RIO,
       logOptionsHandle,
-      SimpleApp, HasLogFunc, LogFunc, setLogUseTime, withLogFunc, HasLogFunc(..), displayShow)
+      SimpleApp, HasLogFunc, LogFunc, setLogUseTime, withLogFunc, HasLogFunc(..), displayShow, Show (show), Display (display))
 import RIO.FilePath ( (</>), takeBaseName, takeDirectory )
 import RIO.Directory (listDirectory, getHomeDirectory)
 import qualified RIO.ByteString.Lazy as L
@@ -63,7 +63,9 @@ process  = do
 -- (xxx.uc!, xxx.info) -> (xxx.mp3)
 convert :: FilePath -> FilePath -> RIO Config ()
 convert file dest = do
-    contents <- {- logInfo (displayShow $ "convert: " ++ file) >> -} liftIO $ L.readFile file
+    logInfo  "converting ... "
+    logInfo $ displayShow file
+    contents <- liftIO $ L.readFile file
     let bytes = L.pack $ unmask <$> L.unpack contents
     info <- loadInfo . infoName $ file
     let songName = case info of
