@@ -1,7 +1,8 @@
 module Main (main) where
 
 import System.Environment
-import Lib (process)
+import Lib (process, Config(..))
+import RIO
 
 main :: IO ()
 main = do
@@ -9,5 +10,6 @@ main = do
   case args of
     [src, dest] -> do
       putStrLn $ "src: " ++ src ++ ", dest: " ++ dest
-      process src dest
+      let config = Config src dest
+      runRIO config $ process
     _ -> putStrLn "print usage"
